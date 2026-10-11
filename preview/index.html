@@ -1,0 +1,275 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Visual review of the AI Bharatiyaa UI foundation.">
+  <title>AI Bharatiyaa — UI foundation preview</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Anek+Devanagari:wdth,wght@75..125,400..700&amp;family=Anek+Latin:wdth,wght@75..125,400..700&amp;family=Noto+Sans:wght@400;500;600;700&amp;display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="../design-tokens/tokens.css">
+  <link rel="stylesheet" href="./preview.css">
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+
+  <header class="site-header">
+    <a class="wordmark" href="#top" aria-label="AI Bharatiyaa home">
+      <span class="wordmark-mark" aria-hidden="true">ai</span>
+      <span>AI Bharatiyaa</span>
+    </a>
+    <nav class="site-nav" aria-label="Preview sections">
+      <a href="#identity">Identity</a>
+      <a href="#interface">Interface</a>
+      <a href="#states">States</a>
+    </nav>
+    <span class="version">Foundation v0.1</span>
+  </header>
+
+  <main id="main">
+    <section class="hero" id="top">
+      <div class="hero-grid" aria-hidden="true"></div>
+      <div class="hero-copy">
+        <p class="context-line"><span class="context-dot"></span>Built in India · dogfooded by a developer</p>
+        <h1>AI tools for<br>Bharatiya builders.</h1>
+        <p class="hero-summary">
+          A shared product language for useful software: technically fluent,
+          calm under load, and designed with Bharatiya workflows as first-class
+          requirements.
+        </p>
+        <div class="hero-actions" aria-label="Example actions">
+          <button class="button button-primary" type="button">Run a workflow</button>
+          <button class="button button-secondary" type="button">Inspect the system</button>
+        </div>
+        <ul class="product-list" aria-label="Planned product family">
+          <li>Task Queue</li>
+          <li>Content Generator</li>
+          <li>Demo Reel</li>
+          <li>AI Mentor</li>
+          <li>Chess Vision</li>
+        </ul>
+      </div>
+
+      <div class="terminal" role="region" aria-label="Example AI workflow console">
+        <div class="terminal-bar">
+          <span class="terminal-title">builder session</span>
+          <span class="terminal-status"><span></span>connected</span>
+        </div>
+        <div class="terminal-body">
+          <p><span class="prompt">$</span> bharatiyaa run task-queue <span class="flag">--profile builder</span></p>
+          <div class="terminal-rule"></div>
+          <p><span class="ok">✓</span> context loaded <span class="terminal-muted">42 ms</span></p>
+          <p><span class="ok">✓</span> worker matched <span class="terminal-muted">image-worker-pune</span></p>
+          <p><span class="running">●</span> generating portfolio asset</p>
+          <div class="progress-track" aria-label="Example progress: 68 percent">
+            <span style="width: 68%"></span>
+          </div>
+          <p class="terminal-output">Output will retain its prompt, model profile, and generation status.</p>
+        </div>
+        <div class="terminal-footer">
+          <span>task_7f3a21c9</span>
+          <span>68%</span>
+        </div>
+      </div>
+    </section>
+
+    <section class="principle-band" aria-label="Design principles">
+      <p><strong>Rooted, not ornamental.</strong> Indian identity comes through real language, context, and users—not visual clichés.</p>
+      <p><strong>AI, made legible.</strong> Show inputs, transformations, provenance, and progress instead of promising magic.</p>
+      <p><strong>Built like a tool.</strong> Dense when useful, quiet when not, and explicit about system state.</p>
+    </section>
+
+    <section class="section" id="identity">
+      <div class="section-heading">
+        <div>
+          <p class="section-index">Identity system</p>
+          <h2>Foundation, not uniformity.</h2>
+        </div>
+        <p>Typography and interaction carry the family resemblance. Each product keeps enough room to reflect its own job.</p>
+      </div>
+
+      <div class="identity-grid">
+        <article class="type-specimen">
+          <p class="specimen-label">Display voice · Anek</p>
+          <p class="display-sample">Build, inspect,<br>improve.</p>
+          <p class="display-sample devanagari" lang="hi">बनाओ। समझो। बेहतर करो।</p>
+          <p class="body-sample">Direct language for people doing real work. Technical values stay precise; explanations remain human.</p>
+          <div class="type-scale" aria-label="Typography scale">
+            <span>12</span><span>14</span><span>16</span><span>20</span><span>24</span><span>32</span><span>40</span>
+          </div>
+        </article>
+
+        <article class="palette-panel">
+          <div class="palette-intro">
+            <p class="specimen-label">Color roles</p>
+            <p>Ink carries information. Indigo carries action. Semantic color keeps its meaning.</p>
+          </div>
+          <div class="swatches">
+            <div class="swatch swatch-ink"><span>Ink</span><code>#101828</code></div>
+            <div class="swatch swatch-indigo"><span>Action</span><code>#4946C7</code></div>
+            <div class="swatch swatch-canvas"><span>Canvas</span><code>#F7F8FA</code></div>
+            <div class="swatch swatch-success"><span>Success</span><code>#067647</code></div>
+            <div class="swatch swatch-warning"><span>Warning</span><code>#93370D</code></div>
+            <div class="swatch swatch-danger"><span>Danger</span><code>#B42318</code></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section class="section interface-section" id="interface">
+      <div class="section-heading">
+        <div>
+          <p class="section-index">Product interface</p>
+          <h2>A developer-facing control surface.</h2>
+        </div>
+        <p>This sample applies the same tokens to the Task Queue domain without pretending the commons repo already owns components.</p>
+      </div>
+
+      <div class="app-frame">
+        <aside class="app-sidebar">
+          <div class="app-brand"><span class="app-brand-mark">Q</span><span>Task Queue</span></div>
+          <nav aria-label="Task Queue sample navigation">
+            <a class="active" href="#interface">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 13h6V4H4v9Zm0 7h6v-4H4v4Zm10 0h6v-9h-6v9Zm0-16v4h6V4h-6Z"/></svg>
+              Overview
+            </a>
+            <a href="#interface">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 7h-4V5c0-1.1-.9-2-2-2h-4c-1.1 0-2 .9-2 2v2H4c-1.1 0-2 .9-2 2v9c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V9c0-1.1-.9-2-2-2ZM10 5h4v2h-4V5Zm10 13H4v-4h6v1h4v-1h6v4Z"/></svg>
+              Workers
+            </a>
+            <a href="#interface">
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M6 2h9l5 5v15H6V2Zm8 2H8v16h10V8h-4V4Zm-4 8h6v2h-6v-2Zm0 4h6v2h-6v-2Z"/></svg>
+              Tasks
+            </a>
+          </nav>
+          <div class="environment"><span></span>Production demo</div>
+        </aside>
+
+        <div class="app-main">
+          <div class="app-header">
+            <div>
+              <p class="app-kicker">Distributed compute</p>
+              <h3>Queue overview</h3>
+            </div>
+            <div class="freshness"><span></span>Live · updated 8s ago</div>
+          </div>
+
+          <div class="metric-row">
+            <article class="metric">
+              <span>Workers online</span>
+              <strong>03</strong>
+              <small>of 4 registered</small>
+            </article>
+            <article class="metric">
+              <span>Tasks running</span>
+              <strong>02</strong>
+              <small>1 waiting</small>
+            </article>
+            <article class="metric metric-attention">
+              <span>Needs attention</span>
+              <strong>01</strong>
+              <small>worker offline</small>
+            </article>
+          </div>
+
+          <div class="toolbar">
+            <label class="search-field">
+              <span class="sr-only">Search tasks</span>
+              <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 20-5.6-5.6a7 7 0 1 0-1 1L20 21l1-1ZM5 10a5 5 0 1 1 10 0 5 5 0 0 1-10 0Z"/></svg>
+              <input type="search" placeholder="Search task or worker">
+            </label>
+            <button class="filter-button" type="button">All statuses <span aria-hidden="true">⌄</span></button>
+          </div>
+
+          <div class="table-shell" tabindex="0" aria-label="Recent tasks table, horizontally scrollable">
+            <table>
+              <caption class="sr-only">Recent task queue activity</caption>
+              <thead>
+                <tr><th scope="col">Status</th><th scope="col">Task</th><th scope="col">Worker</th><th scope="col">Progress</th><th scope="col">Created</th></tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td><span class="status status-running"><i></i>Running</span></td>
+                  <td><strong>Image generation</strong><code>7f3a21c9</code></td>
+                  <td>image-worker-pune</td>
+                  <td><span class="row-progress"><i style="width: 68%"></i></span><small>Rendering · 68%</small></td>
+                  <td>2m ago</td>
+                </tr>
+                <tr>
+                  <td><span class="status status-queued"><i></i>Queued</span></td>
+                  <td><strong>Content outline</strong><code>24bd0e91</code></td>
+                  <td>Waiting for worker</td>
+                  <td><small>Not started</small></td>
+                  <td>4m ago</td>
+                </tr>
+                <tr>
+                  <td><span class="status status-done"><i></i>Completed</span></td>
+                  <td><strong>Demo reel scene</strong><code>1c65a8fe</code></td>
+                  <td>video-worker-01</td>
+                  <td><small>Completed in 1m 42s</small></td>
+                  <td>8m ago</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" id="states">
+      <div class="section-heading">
+        <div>
+          <p class="section-index">System states</p>
+          <h2>Trust is designed in the edges.</h2>
+        </div>
+        <p>A professional tool says what is happening, what changed, and what the developer can do next.</p>
+      </div>
+
+      <div class="state-grid">
+        <article class="state-card">
+          <div class="state-icon state-loading" aria-hidden="true"><span></span></div>
+          <h3>Preparing the worker</h3>
+          <p>Checking memory and starting ComfyUI. This normally takes under a minute.</p>
+          <span class="state-meta">Elapsed 18s</span>
+        </article>
+        <article class="state-card">
+          <div class="state-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M5 5h14v14H5V5Zm2 2v10h10V7H7Zm2 2h6v2H9V9Zm0 4h4v2H9v-2Z"/></svg>
+          </div>
+          <h3>No tasks in this view</h3>
+          <p>Adjust the filters or submit a task to see activity here.</p>
+          <button class="text-button" type="button">Clear filters</button>
+        </article>
+        <article class="state-card state-card-error">
+          <div class="state-icon" aria-hidden="true">
+            <svg viewBox="0 0 24 24"><path d="M12 2 1 21h22L12 2Zm0 4 7.5 13h-15L12 6Zm-1 4v5h2v-5h-2Zm0 7v2h2v-2h-2Z"/></svg>
+          </div>
+          <h3>Queue status unavailable</h3>
+          <p>The API did not respond. Existing tasks are unaffected.</p>
+          <button class="text-button" type="button">Retry connection</button>
+        </article>
+      </div>
+
+      <div class="controls-panel">
+        <div>
+          <p class="specimen-label">Control language</p>
+          <h3>One hierarchy, predictable everywhere.</h3>
+        </div>
+        <div class="control-examples">
+          <button class="button button-primary" type="button">Save changes</button>
+          <button class="button button-secondary" type="button">Preview</button>
+          <button class="button button-tertiary" type="button">Cancel</button>
+          <button class="button button-danger" type="button">Remove worker</button>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="wordmark footer-wordmark"><span class="wordmark-mark" aria-hidden="true">ai</span><span>AI Bharatiyaa</span></div>
+    <p>Made by a builder. Refined by use.</p>
+    <code>commons/ui-foundation@0.1</code>
+  </footer>
+</body>
+</html>
