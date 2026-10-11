@@ -9,7 +9,7 @@ same framework or reach the same level of polish at the same time.
 
 ## Current scope
 
-- [`docs/ui-standards.md`](docs/ui-standards.md) defines the v0.1 product and UI
+- [`docs/ui-standards.md`](docs/ui-standards.md) defines the v0.2 product and UI
   principles.
 - [`design-tokens/tokens.css`](design-tokens/tokens.css) provides the first
   portable token set.
@@ -17,6 +17,10 @@ same framework or reach the same level of polish at the same time.
   should consume and extend the tokens.
 - [`preview/index.html`](preview/index.html) is a living visual review of the
   standards and tokens.
+- [`docs/adoption-playbook.md`](docs/adoption-playbook.md) provides the gradual
+  migration path for applications.
+- [`docs/v0.2-roadmap.md`](docs/v0.2-roadmap.md) records release scope and
+  validation evidence.
 - `skills/` is reserved for a future AI Bharatiyaa UI skill. It remains empty
   until the standards have been tested in more than one application.
 
@@ -36,9 +40,9 @@ treatments may vary.
 
 ## Status
 
-Version `0.1` is a starting contract, not a complete component library. Changes
-should be driven by real application work and recorded here when they become
-repeatable.
+Version `0.2` makes the contract testable and adoption-ready; it is still not a
+component library. Changes should be driven by real application work and
+recorded here when they become repeatable.
 
 ## Visual review
 
@@ -51,3 +55,11 @@ python3 -m http.server 8000
 Then open [http://localhost:8000/preview/](http://localhost:8000/preview/).
 Review it at desktop width and at a narrow mobile width. The preview is a
 reference surface, not a production website or component package.
+
+## Validate
+
+Run the dependency-free checks from the repository root:
+
+```bash
+python3 scripts/validate_ui_foundation.py
+```

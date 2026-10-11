@@ -1,6 +1,6 @@
 # Design tokens
 
-`tokens.css` is the v0.1 source of truth for shared visual values. It uses plain
+`tokens.css` is the v0.2 source of truth for shared visual values. It uses plain
 CSS custom properties so current applications can adopt it without choosing a
 shared frontend framework.
 
@@ -43,6 +43,39 @@ primitives exist to define semantic roles and may change as the system matures.
 Applications may override `--color-app-accent` and
 `--color-text-on-app-accent` at `:root`. The pair must meet WCAG 2.2 AA contrast
 and must not be used for success, warning, danger, or informational states.
+
+## Density
+
+Comfortable density is the default. Place `data-density="compact"` on a bounded
+application region when repeated operational data benefits from tighter controls:
+
+```html
+<section data-density="compact">
+  <!-- Controls use --control-height-current and related density aliases. -->
+</section>
+```
+
+Density must not reduce necessary touch targets in a touch-first context. Do
+not place the attribute on the document root merely to make an entire interface
+feel smaller.
+
+## Layout and layering
+
+The content-width and gutter tokens define shared rhythm without prescribing an
+application shell. Layer tokens provide a small, predictable order for sticky
+UI, menus, overlays, and toasts. Applications should not invent arbitrarily high
+z-index values to escape this order.
+
+## Validation
+
+Run the dependency-free validation before publishing a token change:
+
+```bash
+python3 scripts/validate_ui_foundation.py
+```
+
+It checks duplicate root declarations, undefined token references, and critical
+WCAG contrast pairs. Visual and keyboard review remain required.
 
 ## Fonts
 

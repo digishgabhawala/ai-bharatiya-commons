@@ -1,6 +1,6 @@
 # AI Bharatiyaa UI standards
 
-Status: v0.1 foundation
+Status: v0.2 adoption-ready foundation
 Applies to: AI Bharatiyaa applications and portfolio surfaces
 
 ## Purpose
@@ -91,7 +91,7 @@ real language, real use cases, and the people the software is built for.
 - Meet WCAG 2.2 AA contrast: at least 4.5:1 for normal text and 3:1 for large
   text and meaningful interface boundaries.
 
-Dark mode is deliberately outside v0.1. Add it when an application has a real
+Dark mode remains deliberately outside v0.2. Add it when an application has a real
 use case and both themes can be tested together.
 
 ### Spacing and layout
@@ -247,3 +247,14 @@ A small UI improvement is ready when:
 - Avoid breaking token renames until consumers can migrate deliberately.
 - Revisit this document after the standards are used in two applications; that
   is the earliest point for creating the shared AI Bharatiyaa UI skill.
+
+## Supporting guides
+
+- [`typography.md`](typography.md) defines font loading and mixed-script review.
+- [`accessibility-checklist.md`](accessibility-checklist.md) is the manual quality
+  gate for each increment.
+- [`adoption-playbook.md`](adoption-playbook.md) describes the migration order
+  for consuming applications.
+- [`application-identity.md`](application-identity.md) separates family traits
+  from product-specific expression.
+- [`v0.2-roadmap.md`](v0.2-roadmap.md) records scope and release evidence.

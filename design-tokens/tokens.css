@@ -1,5 +1,5 @@
 /**
- * AI Bharatiyaa design tokens v0.1
+ * AI Bharatiyaa design tokens v0.2
  *
  * Consume semantic tokens in application code. Palette primitives are an
  * implementation detail and may change while semantic roles remain stable.
@@ -66,10 +66,15 @@
   --color-canvas: var(--palette-neutral-50);
   --color-surface: var(--palette-neutral-0);
   --color-surface-subtle: var(--palette-neutral-100);
+  --color-surface-hover: var(--palette-neutral-50);
+  --color-surface-selected: var(--palette-brand-50);
+  --color-surface-disabled: var(--palette-neutral-100);
   --color-surface-inverse: var(--palette-neutral-950);
+  --color-backdrop: rgb(11 18 32 / 64%);
   --color-text-strong: var(--palette-neutral-900);
   --color-text: var(--palette-neutral-700);
   --color-text-muted: var(--palette-neutral-500);
+  --color-text-disabled: var(--palette-neutral-500);
   --color-text-inverse: var(--palette-neutral-0);
   --color-border: var(--palette-neutral-200);
   --color-border-strong: var(--palette-neutral-300);
@@ -79,7 +84,9 @@
   --color-action-hover: var(--palette-brand-700);
   --color-action-active: var(--palette-brand-800);
   --color-action-subtle: var(--palette-brand-50);
+  --color-action-disabled: var(--palette-neutral-200);
   --color-text-on-action: var(--palette-neutral-0);
+  --color-text-on-action-disabled: var(--palette-neutral-500);
   --color-focus: var(--palette-brand-600);
   --color-app-accent: var(--color-action);
   --color-text-on-app-accent: var(--color-text-on-action);
@@ -98,6 +105,15 @@
   --color-danger: #b42318;
   --color-danger-surface: #fef3f2;
   --color-danger-border: #fecdca;
+
+  /* Form fields */
+  --color-field-background: var(--color-surface);
+  --color-field-border: var(--color-border-strong);
+  --color-field-border-hover: var(--palette-neutral-400);
+  --color-field-border-focus: var(--color-focus);
+  --color-field-border-invalid: var(--color-danger);
+  --color-field-placeholder: var(--color-text-muted);
+  --color-field-disabled: var(--color-surface-disabled);
 
   /* Spacing: 4px base */
   --space-0: 0;
@@ -130,8 +146,17 @@
   --control-height-sm: 2.25rem;
   --control-height-md: 2.75rem;
   --control-height-lg: 3rem;
+  --control-height-current: var(--control-height-md);
+  --control-padding-inline: var(--space-4);
+  --control-gap: var(--space-2);
   --focus-ring-width: 2px;
   --focus-ring-offset: 2px;
+  --focus-ring-shadow: 0 0 0 var(--focus-ring-width) var(--color-focus);
+
+  /* Icons */
+  --icon-size-sm: 1rem;
+  --icon-size-md: 1.25rem;
+  --icon-size-lg: 1.5rem;
 
   /* Motion */
   --duration-instant: 80ms;
@@ -145,6 +170,23 @@
   --content-reading: 46rem;
   --content-standard: 75rem;
   --content-wide: 90rem;
+  --page-gutter: clamp(1.25rem, 4vw, 3rem);
+  --section-gap: clamp(4rem, 9vw, 8rem);
+  --app-header-height: 4.5rem;
+  --app-sidebar-width: 14rem;
+
+  /* Layering */
+  --layer-base: 0;
+  --layer-sticky: 10;
+  --layer-dropdown: 20;
+  --layer-overlay: 30;
+  --layer-toast: 40;
+}
+
+[data-density="compact"] {
+  --control-height-current: var(--control-height-sm);
+  --control-padding-inline: var(--space-3);
+  --control-gap: var(--space-1);
 }
 
 @media (prefers-reduced-motion: reduce) {
