@@ -23,8 +23,10 @@
       <a href="#identity">Identity</a>
       <a href="#interface">Interface</a>
       <a href="#states">States</a>
+      <a href="#patterns">Patterns</a>
+      <a href="#adaptation">Adaptation</a>
     </nav>
-    <span class="version">Foundation v0.1</span>
+    <span class="version">Foundation v0.2</span>
   </header>
 
   <main id="main">
@@ -62,7 +64,7 @@
           <p><span class="ok">✓</span> context loaded <span class="terminal-muted">42 ms</span></p>
           <p><span class="ok">✓</span> worker matched <span class="terminal-muted">image-worker-pune</span></p>
           <p><span class="running">●</span> generating portfolio asset</p>
-          <div class="progress-track" aria-label="Example progress: 68 percent">
+          <div class="progress-track" role="progressbar" aria-label="Portfolio asset progress" aria-valuemin="0" aria-valuemax="100" aria-valuenow="68">
             <span style="width: 68%"></span>
           </div>
           <p class="terminal-output">Output will retain its prompt, model profile, and generation status.</p>
@@ -227,7 +229,7 @@
       </div>
 
       <div class="state-grid">
-        <article class="state-card">
+        <article class="state-card" aria-busy="true">
           <div class="state-icon state-loading" aria-hidden="true"><span></span></div>
           <h3>Preparing the worker</h3>
           <p>Checking memory and starting ComfyUI. This normally takes under a minute.</p>
@@ -261,7 +263,157 @@
           <button class="button button-secondary" type="button">Preview</button>
           <button class="button button-tertiary" type="button">Cancel</button>
           <button class="button button-danger" type="button">Remove worker</button>
+          <button class="button" type="button" disabled>Deploy unavailable</button>
         </div>
+      </div>
+    </section>
+
+    <section class="section pattern-section" id="patterns">
+      <div class="section-heading">
+        <div>
+          <p class="section-index">Reference bench</p>
+          <h2>Recovery is part of the interface.</h2>
+        </div>
+        <p>These are behavioral contracts, not production components. They make labels, errors, progress, and AI provenance visible before a framework is chosen.</p>
+      </div>
+
+      <div class="pattern-grid">
+        <article class="bench-panel form-bench">
+          <header class="bench-header">
+            <div>
+              <p class="specimen-label">Form contract</p>
+              <h3>Create a worker profile</h3>
+            </div>
+            <span class="bench-code">form.invalid</span>
+          </header>
+
+          <div class="error-summary" tabindex="-1" aria-labelledby="error-summary-title">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 1 21h22L12 2Zm0 4 7.5 13h-15L12 6Zm-1 4v5h2v-5h-2Zm0 7v2h2v-2h-2Z"/></svg>
+            <div>
+              <h4 id="error-summary-title">Check one field</h4>
+              <a href="#worker-endpoint">Enter an HTTPS endpoint</a>
+            </div>
+          </div>
+
+          <form class="example-form">
+            <div class="field-group">
+              <label for="worker-name">Worker name</label>
+              <input id="worker-name" type="text" value="image-worker-pune" aria-describedby="worker-name-help">
+              <p id="worker-name-help" class="field-help">Use a name that is recognizable in logs.</p>
+            </div>
+
+            <div class="field-group field-invalid">
+              <label for="worker-endpoint">Endpoint</label>
+              <input id="worker-endpoint" type="url" value="pune-worker.local" aria-invalid="true" aria-describedby="worker-endpoint-error">
+              <p id="worker-endpoint-error" class="field-error">
+                <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 1 21h22L12 2Zm0 4 7.5 13h-15L12 6Zm-1 4v5h2v-5h-2Zm0 7v2h2v-2h-2Z"/></svg>
+                Enter a complete address beginning with https://
+              </p>
+            </div>
+
+            <div class="field-group">
+              <label for="worker-region">Region</label>
+              <input id="worker-region" type="text" value="Asia/Kolkata" disabled>
+              <p class="field-help">Inherited from the current environment.</p>
+            </div>
+
+            <div class="form-actions">
+              <button class="button button-primary" type="button">Save worker</button>
+              <button class="button button-tertiary" type="button">Cancel</button>
+            </div>
+          </form>
+        </article>
+
+        <article class="bench-panel feedback-bench">
+          <header class="bench-header">
+            <div>
+              <p class="specimen-label">Operational feedback</p>
+              <h3>Say what changed</h3>
+            </div>
+            <span class="bench-code">status.live</span>
+          </header>
+
+          <div class="notice notice-success" role="status">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m9 16.2-3.5-3.5L4 14.2l5 5 11-11-1.5-1.5L9 16.2Z"/></svg>
+            <div><strong>Worker connected</strong><span>image-worker-pune is ready for new tasks.</span></div>
+          </div>
+          <div class="notice notice-warning">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 2 1 21h22L12 2Zm0 4 7.5 13h-15L12 6Zm-1 4v5h2v-5h-2Zm0 7v2h2v-2h-2Z"/></svg>
+            <div><strong>Results may be stale</strong><span>The last refresh completed 12 minutes ago.</span></div>
+          </div>
+          <div class="notice notice-danger">
+            <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M18.3 5.7 12 12l6.3 6.3-1.4 1.4-6.3-6.3-6.3 6.3-1.4-1.4L9.2 12 2.9 5.7l1.4-1.4 6.3 6.3 6.3-6.3 1.4 1.4Z"/></svg>
+            <div><strong>Connection failed</strong><span>The endpoint refused the request. Check the worker and retry.</span></div>
+            <button class="notice-action" type="button">Retry</button>
+          </div>
+
+          <div class="job-progress" aria-busy="true">
+            <div class="job-progress-heading">
+              <div><strong>Generating preview</strong><span>Step 2 of 3 · rendering frames</span></div>
+              <span>68%</span>
+            </div>
+            <progress value="68" max="100">68%</progress>
+            <p>Keep this page open. The task continues if you move elsewhere.</p>
+          </div>
+        </article>
+      </div>
+
+      <article class="provenance-panel">
+        <div class="provenance-intro">
+          <p class="specimen-label">AI operation receipt</p>
+          <h3>Assistance should leave evidence.</h3>
+          <p>Expose the material facts a developer needs to inspect, reproduce, or challenge an AI-assisted result.</p>
+          <button class="button button-secondary" type="button">Inspect input</button>
+        </div>
+        <dl class="receipt">
+          <div><dt>Operation</dt><dd>Portfolio image generation</dd></div>
+          <div><dt>Model profile</dt><dd><code>flux-dev / local</code></dd></div>
+          <div><dt>Prompt revision</dt><dd><code>prompt_18b7</code></dd></div>
+          <div><dt>Created</dt><dd><time datetime="2026-10-11T14:32:00+05:30">11 Oct 2026, 2:32 PM IST</time></dd></div>
+          <div><dt>Source task</dt><dd><code class="long-token">task_7f3a21c9_429b_4fd8_a520_82d87f4fc9b7</code></dd></div>
+          <div><dt>Review</dt><dd><span class="status status-queued"><i></i>Human review needed</span></dd></div>
+        </dl>
+      </article>
+    </section>
+
+    <section class="section adaptation-section" id="adaptation">
+      <div class="section-heading">
+        <div>
+          <p class="section-index">Adaptation</p>
+          <h2>One grammar, different jobs.</h2>
+        </div>
+        <p>Density and accent can respond to the product. Typography, state meaning, focus, and spacing discipline stay shared.</p>
+      </div>
+
+      <div class="density-comparison">
+        <article class="density-sample">
+          <div class="density-heading"><div><span>Comfortable</span><strong>Writing and review</strong></div><code>default</code></div>
+          <label for="comfortable-title">Draft title</label>
+          <div class="density-row"><input id="comfortable-title" type="text" value="Five lessons from building with AI"><button type="button">Review draft</button></div>
+        </article>
+        <article class="density-sample" data-density="compact">
+          <div class="density-heading"><div><span>Compact</span><strong>Operational monitoring</strong></div><code>data-density="compact"</code></div>
+          <label for="compact-filter">Worker filter</label>
+          <div class="density-row"><input id="compact-filter" type="text" value="image-worker"><button type="button">Apply filter</button></div>
+        </article>
+      </div>
+
+      <div class="theme-grid" aria-label="Provisional application accent examples">
+        <article class="theme-card theme-operations">
+          <div class="theme-mark" aria-hidden="true">Q</div>
+          <div><span class="theme-suite">AI Bharatiyaa</span><h3>Task Queue</h3><p>Compact, operational, explicit about health and progress.</p></div>
+          <button type="button">View workers</button>
+        </article>
+        <article class="theme-card theme-editorial">
+          <div class="theme-mark" aria-hidden="true">L</div>
+          <div><span class="theme-suite">AI Bharatiyaa</span><h3>Content Studio</h3><p>Comfortable, editorial, designed around drafting and comparison.</p></div>
+          <button type="button">Open draft</button>
+        </article>
+      </div>
+
+      <div class="boundary-note">
+        <strong>Provisional by design.</strong>
+        <p>These examples test the override boundary; they do not assign final product brands. An accent is approved only through real product work.</p>
       </div>
     </section>
   </main>
@@ -269,7 +421,7 @@
   <footer>
     <div class="wordmark footer-wordmark"><span class="wordmark-mark" aria-hidden="true">ai</span><span>AI Bharatiyaa</span></div>
     <p>Made by a builder. Refined by use.</p>
-    <code>commons/ui-foundation@0.1</code>
+    <code>commons/ui-foundation@0.2</code>
   </footer>
 </body>
 </html>
