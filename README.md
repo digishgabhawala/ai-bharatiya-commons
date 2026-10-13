@@ -21,6 +21,9 @@ same framework or reach the same level of polish at the same time.
   migration path for applications.
 - [`docs/v0.2-roadmap.md`](docs/v0.2-roadmap.md) records release scope and
   validation evidence.
+- [`docs/platform-deployment-plan.md`](docs/platform-deployment-plan.md)
+  describes the proposed shared-domain, shared-auth deployment for Task Queue
+  and LinkedIn Content Agent.
 - `skills/` is reserved for a future AI Bharatiyaa UI skill. It remains empty
   until the standards have been tested in more than one application.
 
